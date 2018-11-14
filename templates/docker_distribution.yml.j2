@@ -1,0 +1,13 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+    cache:
+        layerinfo: inmemory
+    filesystem:
+        rootdirectory: /var/lib/registry
+    delete:
+        enabled: true
+http:
+    addr: {{ dci_sync_registry_local_ip }}:{{ dci_sync_registry_local_port }}
