@@ -1,0 +1,7 @@
+---
+dci_sync_registry_local_ip: '{{ ansible_default_ipv4.address }}'
+dci_sync_registry_local_port: 5000
+dci_sync_registry_remote_login: ''
+dci_sync_registry_remote_password: ''
+dci_sync_registry_remote_url: registry.distributed-ci.io
+dci_sync_registry_skip_list: []
