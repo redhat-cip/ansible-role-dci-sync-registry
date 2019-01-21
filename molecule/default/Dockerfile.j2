@@ -1,0 +1,8 @@
+{% if item.registry is defined %}
+FROM {{ item.registry.url }}/{{ item.image }}
+{% else %}
+FROM {{ item.image }}
+{% endif %}
+
+RUN yum install -y sudo iproute && \
+    yum clean all
