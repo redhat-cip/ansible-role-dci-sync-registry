@@ -1,0 +1,8 @@
+Code-Review+2: Gonéri Le Bouder <goneri@lebouder.net>
+Workflow+1: Gonéri Le Bouder <goneri@lebouder.net>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Mon, 21 Jan 2019 18:38:43 +0000
+Reviewed-on: https://softwarefactory-project.io/r/14820
+Project: ansible-role-dci-sync-registry
+Branch: refs/heads/master
