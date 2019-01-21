@@ -1,0 +1,13 @@
+---
+- name: docker restart
+  service:
+    daemon_reload: true
+    name: docker
+    state: restarted
+  become: true
+
+- name: registry restart
+  service:
+    name: docker-distribution
+    state: restarted
+  become: true

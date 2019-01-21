@@ -13,6 +13,7 @@
       {"insecure-registries":["{{ dci_sync_registry_local_ip }}:{{ dci_sync_registry_local_port }}"] }
     dest: /etc/docker/daemon.json
   become: true
+  notify: docker restart
 
 - name: Enable storage backend
   lineinfile:
@@ -20,6 +21,7 @@
     line: "STORAGE_DRIVER={{ dci_sync_registry_storage }}"
     regexp: '^STORAGE_DRIVER='
   become: true
+  notify: docker restart
 
 - name: Create the docker.service.d directory
   file:
@@ -35,13 +37,13 @@
     src: docker_http_proxy.j2
     dest: /etc/systemd/system/docker.service.d/http-proxy.conf
   become: true
+  notify: docker restart
 
-- name: Ensure docker is restarted
+- name: Ensure docker is started
   service:
-    # we reload systemd in case docker.service.d content has changed
-    daemon_reload: true
     name: docker
-    state: restarted
+    state: started
+    enabled: true
   become: true
 
 - name: Prepare docker-distribution configuration
@@ -49,11 +51,13 @@
     src: docker_distribution.yml.j2
     dest: /etc/docker-distribution/registry/config.yml
   become: true
+  notify: registry restart
 
-- name: Ensure docker-distribution is restarted
+- name: Ensure docker-distribution is started
   service:
     name: docker-distribution
-    state: restarted
+    state: started
+    enabled: true
   become: true
 
 - name: Open docker registry port on the firewall
@@ -72,6 +76,8 @@
     regexp: '.*-{{ item }}.*'
     state: absent
   with_items: '{{ dci_sync_registry_skip_list }}'
+
+- meta: flush_handlers
 
 - name: Download the Openstack container images
   shell: |
