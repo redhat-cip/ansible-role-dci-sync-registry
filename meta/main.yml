@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: Distributed-CI Team
   description: An Ansible role that sync DCI registry
