@@ -1,0 +1,13 @@
+{% if item.registry is defined %}
+FROM {{ item.registry.url }}/{{ item.image }}
+{% else %}
+FROM {{ item.image }}
+{% endif %}
+
+RUN yum install -y sudo iproute && \
+    yum clean all
+
+RUN echo -e "---\n\
+- docker.io/amd64/busybox:latest\n\
+- docker.io/amd64/registry:latest\n\
+- docker.io/amd64/haproxy:latest" > /images_list.yaml

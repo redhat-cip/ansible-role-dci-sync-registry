@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-role-dci-sync-registry
+      vars:
+        dci_sync_registry_engine: vfs
+        dci_sync_registry_images_list: /images_list.yaml
+        dci_sync_registry_local_ip: 127.0.0.1
