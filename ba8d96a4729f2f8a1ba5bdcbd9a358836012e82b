@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c198560_1a1afafb",
+        "filename": "molecule/default/Dockerfile.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2019-01-21T20:05:41Z",
+      "side": 1,
+      "message": "No a major naaahhh. But I don\u0027t think it\u0027s the way to go because we create a bonding with the docker image and the testinfra tests.\n\nThis should be done during the tests. For instance with a Pytest fixture.",
+      "revId": "ba8d96a4729f2f8a1ba5bdcbd9a358836012e82b",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "343a7561_303b35af",
+        "filename": "molecule/default/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2019-01-21T20:05:41Z",
+      "side": 1,
+      "message": "I guess the \"privileged: true\" is because of the docker daemon? I would prefer we just grand the fine capabilities to the container, but I understand that the context is special.",
+      "revId": "ba8d96a4729f2f8a1ba5bdcbd9a358836012e82b",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd8bdf84_d4f7d42f",
+        "filename": "molecule/default/playbook.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2019-01-21T20:05:41Z",
+      "side": 1,
+      "message": "If we want to keep the images_list.yaml out of the Docker image, we will need a way to upload the file from the local machine. Something like:\ndci_sync_registry_images_list_content",
+      "revId": "ba8d96a4729f2f8a1ba5bdcbd9a358836012e82b",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
