@@ -5,3 +5,4 @@ dci_sync_registry_remote_login: ''
 dci_sync_registry_remote_password: ''
 dci_sync_registry_remote_url: registry.distributed-ci.io
 dci_sync_registry_skip_list: []
+dci_sync_registry_storage: overlay2

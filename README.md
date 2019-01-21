@@ -14,6 +14,7 @@ An Ansible role that sync DCI registry.
 | dci_sync_registry_remote_password | False | '' | String | Password to the remote registry when required |
 | dci_sync_registry_remote_url | False | registry.distributed-ci.io | String | Remove container registry url |
 | dci_sync_registry_skip_list | False | [] | List | Container images list to exclude of the synchronization |
+| dci_sync_registry_storage | False | overlay2 | String | Docker storage drivers to use |
 
 
 ### Example

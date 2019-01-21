@@ -14,10 +14,10 @@
     dest: /etc/docker/daemon.json
   become: true
 
-- name: Enable overlay2 storage backend
+- name: Enable storage backend
   lineinfile:
     dest: /etc/sysconfig/docker-storage-setup
-    line: "STORAGE_DRIVER=overlay2"
+    line: "STORAGE_DRIVER={{ dci_sync_registry_storage }}"
     regexp: '^STORAGE_DRIVER='
   become: true
 
