@@ -1,0 +1,19 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Create images_list.yaml file
+      copy:
+        dest: /images_list.yaml
+        content: |
+          ---
+          - docker.io/amd64/busybox:latest
+          - docker.io/amd64/registry:latest
+          - docker.io/amd64/haproxy:latest
+
+    - include_role:
+        name: ansible-role-dci-sync-registry
+      vars:
+        dci_sync_registry_images_list: /images_list.yaml
+        dci_sync_registry_local_ip: 127.0.0.1
+        dci_sync_registry_storage: vfs
