@@ -16,6 +16,24 @@
       "revId": "a79128c5e8c739da7afe5106786464e8ebadac91",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6e3539e_97bd809e",
+        "filename": "molecule/default/playbook.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2019-01-23T18:44:27Z",
+      "side": 1,
+      "message": "I missed to replace this one. Nice catch !",
+      "parentUuid": "70328ec0_5b4fdabc",
+      "revId": "a79128c5e8c739da7afe5106786464e8ebadac91",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
