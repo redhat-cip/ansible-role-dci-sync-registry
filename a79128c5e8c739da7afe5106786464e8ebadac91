@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70328ec0_5b4fdabc",
+        "filename": "molecule/default/playbook.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2019-01-23T18:38:44Z",
+      "side": 1,
+      "message": "Could you please replace dci_sync_registry_engine by dci_sync_registry_storage. It was enough to resolve the issue here.",
+      "revId": "a79128c5e8c739da7afe5106786464e8ebadac91",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
