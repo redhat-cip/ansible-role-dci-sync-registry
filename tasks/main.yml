@@ -79,7 +79,7 @@
 
 - meta: flush_handlers
 
-- name: Download the Openstack container images
+- name: Download the container images
   script: ./fetch_images.py {{ dci_sync_registry_images_list }}
   register: image_sync_result
   until: image_sync_result.rc == 0
