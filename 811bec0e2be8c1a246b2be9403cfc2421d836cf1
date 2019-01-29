@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6a3dd38_267e8329",
+        "filename": "molecule/default/Dockerfile.j2",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2019-01-29T18:13:35Z",
+      "side": 1,
+      "message": "Since we do the same thing again and again, we should push a base image of CentOS7+iproute+centos user on registry.distributed-ci.io.",
+      "revId": "811bec0e2be8c1a246b2be9403cfc2421d836cf1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
