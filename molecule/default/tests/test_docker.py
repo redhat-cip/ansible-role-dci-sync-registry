@@ -51,7 +51,8 @@ def test_docker_socket(host):
 
 
 def test_docker_info(host):
-    cmd = host.run('sudo docker info')
-    assert cmd.rc == 0
-    assert 'Storage Driver: vfs' in cmd.stdout
-    assert ' 127.0.0.1:5000' in cmd.stdout
+    with host.sudo():
+        cmd = host.run('docker info')
+        assert cmd.rc == 0
+        assert 'Storage Driver: vfs' in cmd.stdout
+        assert ' 127.0.0.1:5000' in cmd.stdout

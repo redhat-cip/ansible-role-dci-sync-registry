@@ -33,10 +33,11 @@ def test_docker_distribution_socket(host):
 
 
 def test_docker_distribution_pull_image(host):
-    cmd = host.run('sudo docker pull 127.0.0.1:5000/amd64/busybox:latest')
-    assert cmd.rc == 0
-    assert 'Pull complete' in cmd.stdout
-    assert '127.0.0.1:5000/amd64/busybox:latest' in cmd.stdout
+    with host.sudo():
+        cmd = host.run('docker pull 127.0.0.1:5000/amd64/busybox:latest')
+        assert cmd.rc == 0
+        assert 'Pull complete' in cmd.stdout
+        assert '127.0.0.1:5000/amd64/busybox:latest' in cmd.stdout
 
 
 def test_docker_distribution_catalog(host):
