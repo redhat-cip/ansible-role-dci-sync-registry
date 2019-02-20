@@ -26,6 +26,7 @@ cp -r defaults %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
 cp -r files %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
 cp -r tasks %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
 cp -r templates %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
+cp -r handlers %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
 
 
 %files
