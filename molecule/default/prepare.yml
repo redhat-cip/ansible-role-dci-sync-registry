@@ -1,0 +1,14 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Create images_list.yaml file
+      copy:
+        dest: /var/tmp/images_list.yaml
+        content: |
+          ---
+          - docker.io/amd64/busybox:latest
+          - docker.io/amd64/registry:latest
+          - docker.io/amd64/haproxy:latest
+          - docker.io/amd64/centos-httpd:latest
+      become: true

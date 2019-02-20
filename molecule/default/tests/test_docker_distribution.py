@@ -48,3 +48,12 @@ def test_docker_distribution_catalog(host):
     assert repositories[0] == 'amd64/busybox'
     assert repositories[1] == 'amd64/haproxy'
     assert repositories[2] == 'amd64/registry'
+
+
+def test_docker_distribution_skip_list(host):
+    f = host.file('/var/tmp/images_list.yaml')
+    assert f.exists
+    assert f.is_file
+    assert f.user == 'root'
+    assert f.group == 'root'
+    assert not f.contains('docker.io/amd64/centos-httpd:latest')

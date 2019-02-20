@@ -75,6 +75,7 @@
     path: '{{ dci_sync_registry_images_list }}'
     regexp: '.*-{{ item }}.*'
     state: absent
+  become: true
   with_items: '{{ dci_sync_registry_skip_list }}'
 
 - meta: flush_handlers
