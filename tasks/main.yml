@@ -50,6 +50,8 @@
   template:
     src: docker_distribution.yml.j2
     dest: /etc/docker-distribution/registry/config.yml
+  vars:
+    registry_readonly: false
   become: true
   notify: registry restart
 
@@ -92,3 +94,25 @@
     DCI_REGISTRY: '{{ dci_sync_registry_remote_url }}'
     DCI_REGISTRY_PASSWORD: '{{ dci_sync_registry_remote_password }}'
     DCI_REGISTRY_USER: '{{ dci_sync_registry_remote_login }}'
+
+- name: Change docker-distribution to read-only mode while doing the garbage-collect
+  template:
+    src: docker_distribution.yml.j2
+    dest: /etc/docker-distribution/registry/config.yml
+  vars:
+    registry_readonly: true
+  become: true
+  notify: registry restart
+
+- name: Run the registry garbage-collect
+  command: /usr/bin/registry garbage-collect /etc/docker-distribution/registry/config.yml
+  become: true
+
+- name: Change docker-distribution to read-only mode while doing the garbage-collect
+  template:
+    src: docker_distribution.yml.j2
+    dest: /etc/docker-distribution/registry/config.yml
+  vars:
+    registry_readonly: false
+  become: true
+  notify: registry restart
