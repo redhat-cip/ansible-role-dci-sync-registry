@@ -50,6 +50,8 @@
   template:
     src: docker_distribution.yml.j2
     dest: /etc/docker-distribution/registry/config.yml
+  vars:
+    registry_readonly: false
   become: true
   notify: registry restart
 
@@ -75,7 +77,7 @@
     path: '{{ dci_sync_registry_images_list }}'
     regexp: '.*-{{ item }}.*'
     state: absent
-  with_items: '{{ dci_sync_registry_skip_list }}'
+  with_items: '{{ dci_sync_registry_skip_list }}'
 
 - meta: flush_handlers
 
@@ -92,3 +94,28 @@
     DCI_REGISTRY: '{{ dci_sync_registry_remote_url }}'
     DCI_REGISTRY_PASSWORD: '{{ dci_sync_registry_remote_password }}'
     DCI_REGISTRY_USER: '{{ dci_sync_registry_remote_login }}'
+
+- name: Change docker-distribution to read-only mode while doing the garbage-collect
+  template:
+    src: docker_distribution.yml.j2
+    dest: /etc/docker-distribution/registry/config.yml
+  vars:
+    registry_readonly: true
+  become: true
+  notify: registry restart
+  tags: molecule-idempotence-notest
+
+- name: Run the registry garbage-collect  # noqa 301
+  command: /usr/bin/registry garbage-collect /etc/docker-distribution/registry/config.yml
+  become: true
+  tags: molecule-idempotence-notest
+
+- name: Change docker-distribution to read-only mode while doing the garbage-collect
+  template:
+    src: docker_distribution.yml.j2
+    dest: /etc/docker-distribution/registry/config.yml
+  vars:
+    registry_readonly: false
+  become: true
+  notify: registry restart
+  tags: molecule-idempotence-notest

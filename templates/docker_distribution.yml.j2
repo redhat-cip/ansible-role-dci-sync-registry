@@ -11,3 +11,6 @@ storage:
         enabled: true
 http:
     addr: {{ dci_sync_registry_local_ip }}:{{ dci_sync_registry_local_port }}
+maintenance:
+    readonly:
+        enabled: {{ registry_readonly | default("false") }}

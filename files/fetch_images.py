@@ -20,7 +20,6 @@ import sys
 
 import docker
 import requests
-import subprocess
 import yaml
 
 client = docker.from_env()
@@ -59,7 +58,8 @@ def list_existing_tags(image):
     else:
         raise Exception(r.text)
 
-# If we remove all the tag of the existing image, we won't be able to actuallly
+
+# If we don't remove all the tag of the existing image, we won't be able to actually
 # delete it from the registry. As a result, the registry size will grow up indefinitely.
 # Any tag can potentially be already used by an image and by the last "string"
 # attached to it. So before we apply a tag, we delete any potential existing tag.
@@ -90,14 +90,6 @@ def sync_image(image):
 def purge_image_from_local_docker(image):
     for image in client.images('{origin_registry}/{project}/{name}'.format(**image)):
         client.remove_image(image['Id'], force=True)
-
-
-def call_registry_gc():
-    print('Calling the registry garbage collector')
-    subprocess.check_call([
-        '/usr/bin/registry',
-        'garbage-collect',
-        '/etc/docker-distribution/registry/config.yml'])
 
 
 def main():
@@ -135,7 +127,7 @@ def main():
             images_to_purge.append(image)
     for image in images_to_purge:
         purge_image_from_local_docker(image)
-    call_registry_gc()
+
 
 if __name__ == '__main__':
     main()
