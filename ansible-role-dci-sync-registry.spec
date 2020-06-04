@@ -1,6 +1,6 @@
 Name:       ansible-role-dci-sync-registry
 Version:    0.0.VERS
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    ansible-role-dci-sync-registry
 License:    ASL 2.0
 URL:        https://github.com/redhat-cip/ansible-role-dci-sync-registry
@@ -36,5 +36,7 @@ cp -r handlers %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
 
 
 %changelog
+* Thu Jun 04 2020 Bill Peck <bpeck@rehdat.com> - 0.0.1-2
+- Rebuild for RHEL-8
 * Thu Nov 13 2018 Dimitri Savineau <dsavinea@redhat.com> - 0.0.1-1
 - Initial release
