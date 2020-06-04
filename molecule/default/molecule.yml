@@ -4,8 +4,8 @@ dependency:
   enabled: false
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  yamllint tasks
 platforms:
   - name: el7
     image: centos/systemd:latest
@@ -19,6 +19,14 @@ provisioner:
     name: ansible-lint
 scenario:
   name: default
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - destroy
 verifier:
   name: testinfra
   options:
