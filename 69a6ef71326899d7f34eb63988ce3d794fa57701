@@ -1,0 +1,8 @@
+Code-Review+2: Bill Peck <bill@pecknet.com>
+Workflow+1: Bill Peck <bill@pecknet.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Fri, 24 Jul 2020 20:04:33 +0000
+Reviewed-on: https://softwarefactory-project.io/r/18533
+Project: ansible-role-dci-sync-registry
+Branch: refs/heads/master
