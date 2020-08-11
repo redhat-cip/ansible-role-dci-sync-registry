@@ -3,12 +3,16 @@ dependency:
   name: galaxy
   enabled: false
 driver:
-  name: docker
+  name: podman
 lint: |
   yamllint tasks
 platforms:
   - name: el7
-    image: centos/systemd:latest
+    image: centos:7
+    privileged: true
+    command: /sbin/init
+  - name: el8
+    image: centos:8
     privileged: true
     command: /sbin/init
 provisioner:
