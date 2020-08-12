@@ -1,0 +1,8 @@
+Code-Review+2: Haïkel Guémar <hguemar@fedoraproject.org>
+Workflow+1: Haïkel Guémar <hguemar@fedoraproject.org>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Wed, 12 Aug 2020 21:02:27 +0000
+Reviewed-on: https://softwarefactory-project.io/r/19257
+Project: ansible-role-dci-sync-registry
+Branch: refs/heads/master
