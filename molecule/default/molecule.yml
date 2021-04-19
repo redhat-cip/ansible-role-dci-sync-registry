@@ -2,10 +2,10 @@
 dependency:
   name: galaxy
   enabled: false
+
 driver:
   name: podman
-lint: |
-  yamllint tasks
+
 platforms:
   - name: el7
     image: centos:7
@@ -15,12 +15,16 @@ platforms:
     image: centos:8
     privileged: true
     command: /sbin/init
+
+lint: yamllint tasks
+
 provisioner:
   name: ansible
   connection_options:
     ansible_user: centos
   lint:
     name: ansible-lint
+
 scenario:
   name: default
   test_sequence:
@@ -31,6 +35,7 @@ scenario:
     - create
     - prepare
     - destroy
+
 verifier:
   name: testinfra
   options:
