@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: dci.sync_registry
   author: Distributed-CI Team
   description: An Ansible role that sync DCI registry
   company: Red Hat
@@ -9,6 +10,8 @@ galaxy_info:
     - name: EL
       versions:
         - 7
+        - 8
+        - 9
 
   galaxy_tags: []
 

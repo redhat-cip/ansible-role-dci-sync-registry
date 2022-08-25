@@ -1,6 +1,6 @@
 # ansible-role-dci-sync-registry
 
-An Ansible role that sync DCI registry.
+An Ansible role that syncs DCI registry.
 
 
 ## Role Variables
