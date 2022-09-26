@@ -1,6 +1,6 @@
 Name:       ansible-role-dci-sync-registry
-Version:    0.0.VERS
-Release:    2%{?dist}
+Version:    0.1.0
+Release:    1.VERS%{?dist}
 Summary:    ansible-role-dci-sync-registry
 License:    ASL 2.0
 URL:        https://github.com/redhat-cip/ansible-role-dci-sync-registry
@@ -20,20 +20,14 @@ An Ansible role that sync DCI registry
 %build
 
 %install
-mkdir -p %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
-chmod 755 %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
-
-cp -r defaults %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
-cp -r files %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
-cp -r tasks %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
-cp -r templates %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
-cp -r handlers %{buildroot}%{_datadir}/dci/roles/dci-sync-registry
 
 %if 0%{?rhel} && 0%{?rhel} < 8
-pathfix.py -pni "%{__python2}" %{buildroot}%{_datadir}/dci/roles/dci-sync-registry/files/fetch_images.py
+PYTHON="%{__python2}"
 %else
-pathfix.py -pni "%{__python3}" %{buildroot}%{_datadir}/dci/roles/dci-sync-registry/files/fetch_images.py
+PYTHON="%{__python3}"
 %endif
+
+make install BUILDROOT=%{buildroot} DATADIR=%{_datadir}/dci/roles PYTHON=$PYTHON
 
 %files
 %doc README.md
@@ -42,7 +36,11 @@ pathfix.py -pni "%{__python3}" %{buildroot}%{_datadir}/dci/roles/dci-sync-regist
 
 
 %changelog
+* Mon Sep 26 2022 Frederic Lepied <flepied@redhat.com> 0.1.0-1
+- use a Makefile
+
 * Thu Jun 04 2020 Bill Peck <bpeck@rehdat.com> - 0.0.1-2
 - Rebuild for RHEL-8
+
 * Thu Nov 13 2018 Dimitri Savineau <dsavinea@redhat.com> - 0.0.1-1
 - Initial release
