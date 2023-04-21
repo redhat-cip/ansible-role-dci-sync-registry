@@ -105,12 +105,15 @@
   notify: registry restart
   tags: molecule-idempotence-notest
 
+- name: Flush handlers
+  meta: flush_handlers
+
 - name: Run the registry garbage-collect  # noqa 301
   command: /usr/bin/registry garbage-collect /etc/docker-distribution/registry/config.yml
   become: true
   tags: molecule-idempotence-notest
 
-- name: Change docker-distribution to read-only mode while doing the garbage-collect
+- name: Change docker-distribution to read-write mode after the garbage-collect
   template:
     src: docker_distribution.yml.j2
     dest: /etc/docker-distribution/registry/config.yml
